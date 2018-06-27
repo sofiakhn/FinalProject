@@ -14,6 +14,11 @@ namespace BoxProblem.Repositories
             dbContext = context;
         }
 
+        public List<BoxInventory> GetAllBoxes()
+        {
+            return dbContext.Boxes.ToList();
+        }
+
         public List<BoxInventory> FilterByWeight(int MinWeight, int MaxWeight)
         {
             List<BoxInventory> Boxes = dbContext.Boxes.Where(b => b.Weight <= MaxWeight && b.Weight >= MinWeight).ToList();
