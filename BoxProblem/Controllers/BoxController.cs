@@ -10,11 +10,13 @@ namespace BoxProblem.Controllers
 {
     public class BoxController : Controller
     {
-        private BoxService service;
+        BoxService service;
+         
         public BoxController(ApplicationDbContext context)
         {
             service = new BoxService(context);
         }
+
         public ActionResult Index()
         {
             return View(service.GetAllBoxes());
