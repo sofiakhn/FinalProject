@@ -4,6 +4,9 @@
 }
 
 <h2>Filter</h2>
+<p>
+    @Html.ActionLink("Index", "Index")
+</p>
 
 @using (Html.BeginForm())
 {
@@ -37,13 +40,13 @@
             <h3>Can Carry Liquid</h3>
             <div class="col-md-2">
                 <label for="Can Hold Liquid">Yes</label>
-                @Html.EditorFor(model => model.CanHoldLiquid, new { htmlAttributes = new { @type = "Radio", @for = "Can Hold Liquid", @value = "Yes" } })
+                @Html.EditorFor(model => model.CanHoldLiquid, new { htmlAttributes = new { @name = "selector", @type = "Radio", @for = "Can Hold Liquid", @value = "Yes" } })
                 <br />
                 <label for="Can't Hold Liquid">No</label>
-                @Html.EditorFor(model => model.CantHoldLiquid, new { htmlAttributes = new { @type = "Radio", @for = "Can't Hold Liquid", @value = "No" } })
+                @Html.EditorFor(model => model.CantHoldLiquid, new { htmlAttributes = new { @name = "selector", @type = "Radio", @for = "Can't Hold Liquid", @value = "No" } })
                 <br />
                 <label for="Doesn't Matter">Either</label>
-                @Html.EditorFor(model => model.DoesntMatter, new { htmlAttributes = new { @type = "Radio", @for = "Doesn't Matter", @value = "Either" } })
+                @Html.EditorFor(model => model.DoesntMatter, new { htmlAttributes = new { @name = "selector", @type = "Radio", @for = "Doesn't Matter", @value = "Either" } })
                 <br />            
             </div>
         </div>
@@ -58,6 +61,10 @@
                 <label for="Max">Max</label>
                 @Html.EditorFor(model => model.MaxCost, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
             </div>
+        </div>
+        <hr />
+        <div class="row">
+            <input type ="submit" value="Filter" class="btn btn-default"/>
         </div>
     </div>
 </div>

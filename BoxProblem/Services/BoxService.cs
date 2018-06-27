@@ -23,7 +23,7 @@ namespace BoxProblem.Services
         public List<BoxInventory> Filter(FilterModel Filter)
         {
             return repository.Filter(Filter.MinWeight, Filter.MaxWeight,
-                                     Filter.MaxVolume, Filter.MaxVolume,
+                                     Filter.MinVolume, Filter.MaxVolume,
                                      Filter.CanHoldLiquid,
                                      Filter.CantHoldLiquid,
                                      Filter.DoesntMatter,
