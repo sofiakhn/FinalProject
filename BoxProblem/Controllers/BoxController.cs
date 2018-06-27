@@ -26,5 +26,13 @@ namespace BoxProblem.Controllers
         {
             return View();
         }
+
+
+        [HttpPost]
+        public ActionResult Filter(FilterModel Model)
+        {
+            List<BoxInventory> boxes = service.Filter(Model);
+            return RedirectToAction("Index", boxes);
+        }
     }
 }
