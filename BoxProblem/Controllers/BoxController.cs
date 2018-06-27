@@ -43,6 +43,7 @@ namespace BoxProblem.Controllers
             return View(box);
         }
 
+        [HttpPost, ActionName("Delete")]
         [HttpPost]
         public ActionResult DeleteConfirmed(int id)
         {
