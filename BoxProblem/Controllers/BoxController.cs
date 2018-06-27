@@ -37,6 +37,7 @@ namespace BoxProblem.Controllers
             return View("Index");
         }
 
+
         public ActionResult Delete(int id)
         {
             BoxInventory box = service.GetBoxById(id);
@@ -50,6 +51,24 @@ namespace BoxProblem.Controllers
             BoxInventory box = service.GetBoxById(id);
             service.DeleteBox(box);
             return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Edit(int id)
+        {
+            BoxInventory box = service.GetBoxById(id);
+            return View(box);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(BoxInventory box)
+        {
+            if (ModelState.IsValid)
+            {
+                service.SaveEdits(box);
+                return RedirectToAction("Index");
+            }
+            return View(box);
         }
 
     }

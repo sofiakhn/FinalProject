@@ -28,6 +28,11 @@ namespace BoxProblem.Services
             repository.DeleteBox(toDelete);
         }
 
+        public void SaveEdits(BoxInventory toSave)
+        {
+            repository.SaveEdits(toSave);
+        }
+
         public List<BoxInventory> GetAllBoxes()
         {
             return repository.GetAllBoxes();
