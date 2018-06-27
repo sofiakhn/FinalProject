@@ -13,5 +13,10 @@ namespace BoxProblem.Repositories
         {
             dbContext = context;
         }
+
+        public List<BoxInventory> GetAllBoxes()
+        {
+            return dbContext.Boxes.ToList();
+        }
     }
 }
