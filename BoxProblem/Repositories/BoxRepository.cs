@@ -45,11 +45,6 @@ namespace BoxProblem.Repositories
         }
 
 
-        public List<BoxInventory> GetAllBoxes()
-        {
-            return dbContext.Boxes.ToList();
-        }
+     
     }
         }
-    }
-}
