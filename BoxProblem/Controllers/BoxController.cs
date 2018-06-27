@@ -22,9 +22,10 @@ namespace BoxProblem.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
+        [HttpPost]
         public ActionResult Create(BoxInventory box)
         {
             if (ModelState.IsValid)
@@ -33,15 +34,16 @@ namespace BoxProblem.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(box);
+            return View("Index");
         }
 
         public ActionResult Delete(int id)
         {
             BoxInventory box = service.GetBoxById(id);
-            return View(box);
+            return View("Delete");
         }
 
+        [HttpPost]
         public ActionResult DeleteConfirmed(int id)
         {
             BoxInventory box = service.GetBoxById(id);
