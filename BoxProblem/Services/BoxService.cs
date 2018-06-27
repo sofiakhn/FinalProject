@@ -17,7 +17,17 @@ namespace BoxProblem.Services
 
         public List<BoxInventory> GetAllBoxes()
         {
-            return repository.GetAllBoxes();
+            return repository.GetAllBoxes().ToList();
+        }
+
+        public List<BoxInventory> Filter(FilterModel Filter)
+        {
+            return repository.Filter(Filter.MinWeight, Filter.MaxWeight,
+                                     Filter.MaxVolume, Filter.MaxVolume,
+                                     Filter.CanHoldLiquid,
+                                     Filter.CantHoldLiquid,
+                                     Filter.DoesntMatter,
+                                     Filter.MinCost, Filter.MaxCost).ToList();
         }
 
         public List<BoxInventory> FilterByWeight(int MinWeight, int MaxWeight)
@@ -29,5 +39,16 @@ namespace BoxProblem.Services
         {
             return repository.FilterByVolume(MinVolume, MaxVolume);
         }
+
+        public List<BoxInventory> FilterByLiquidProof(bool isLiquidProof)
+        {
+            return repository.FilterByLiquidProof(isLiquidProof);
+        }
+
+        public List<BoxInventory> FilterByCost(int MinCost, int MaxCost)
+        {
+            return repository.FilterByCost(MinCost, MaxCost);
+        }
+
     }
 }

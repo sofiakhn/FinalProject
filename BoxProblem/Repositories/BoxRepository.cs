@@ -14,9 +14,58 @@ namespace BoxProblem.Repositories
             dbContext = context;
         }
 
-        public List<BoxInventory> GetAllBoxes()
+        public IQueryable<BoxInventory> GetAllBoxes()
         {
-            return dbContext.Boxes.ToList();
+            return dbContext.Boxes.AsQueryable();
+        }
+
+        public IQueryable<BoxInventory> Filter(int? MinWeight, int? MaxWeight, int? MinVolume, int? MaxVolume, bool? CanHold, bool? CantHold, bool? Either, int? MinCost, int? MaxCost)
+        {
+            IQueryable<BoxInventory> Filter = dbContext.Boxes.AsQueryable<BoxInventory>();
+
+            if (MaxWeight != null)
+            {
+                if(MinWeight == null)
+                {
+                    Filter = Filter.Where(d => d.Weight >= 0 && d.Weight <= MaxWeight);
+                }
+                else
+                {
+                    Filter = Filter.Where(d => d.Weight >= MinCost && d.Weight <= MaxWeight);
+                }
+            }
+            if (MaxVolume != null)
+            {
+                if(MinVolume == null)
+                {
+                    Filter = Filter.Where(d => d.Volume >= 0 && d.Volume <= MaxVolume);
+                }
+                else
+                {
+                    Filter = Filter.Where(d => d.Volume >= MinVolume && d.Volume <= MaxVolume);
+                }
+            }
+            if (CanHold == true)
+            {
+                Filter = Filter.Where(d => d.CanHoldLiquid == true);
+            }
+            if (CantHold == true)
+            {
+                Filter = Filter.Where(d => d.CanHoldLiquid == true);
+            }
+            if(MaxCost != null)
+            {
+                if(MinCost == null)
+                {
+                    Filter = Filter.Where(d => d.Cost >= 0 && d.Cost <= MaxCost);
+                }
+                else
+                {
+                    Filter = Filter.Where(d => d.Cost >= MinCost && d.Cost <= MaxCost);
+                }
+            }
+
+            return Filter;
         }
 
         public List<BoxInventory> FilterByWeight(int MinWeight, int MaxWeight)

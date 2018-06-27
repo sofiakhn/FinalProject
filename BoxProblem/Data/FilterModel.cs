@@ -7,17 +7,17 @@ namespace BoxProblem.Data
 {
     public class FilterModel
     {
-        public double MinWeight { get; set; }
-        public double MaxWeight { get; set; }
+        public int? MinWeight { get; set; }
+        public int? MaxWeight { get; set; }
 
-        public double MinVolume { get; set; }
-        public double MaxVolume { get; set; }
+        public int? MinVolume { get; set; }
+        public int? MaxVolume { get; set; }
 
-        public bool CanHoldLiquid { get; set; }
-        public bool CantHoldLiquid { get; set; }
-        public bool DoesntMatter { get; set; }
+        public bool? CanHoldLiquid { get; set; }
+        public bool? CantHoldLiquid { get; set; }
+        public bool? DoesntMatter { get; set; }
 
-        public double MinCost { get; set; }
-        public double MaxCost { get; set; }
+        public int? MinCost { get; set; }
+        public int? MaxCost { get; set; }
     }
 }
