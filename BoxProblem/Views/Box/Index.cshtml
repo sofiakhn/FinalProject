@@ -9,28 +9,37 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
+<div>
+
+</div>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.InventoryCount)
+            @Html.ActionLink("Id", "Index", new { sortOrder = ViewBag.IdSortParm})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Weight)
+            @Html.ActionLink("Inventory Count", "Index", new { sortOrder = ViewBag.InventoryCountSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Volume)
+            @Html.ActionLink("Weight", "Index", new { sortOrder = ViewBag.WeightSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CanHoldLiquid)
+            @Html.ActionLink("Volume", "Index", new { sortOrder = ViewBag.VolumeSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cost)
+            Can Hold Liquid
+        </th>
+        <th>
+            @Html.ActionLink("Cost", "Index", new { sortOrder = ViewBag.CostSortParm })
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(ModelItem => item.Id)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.InventoryCount)
             </td>
