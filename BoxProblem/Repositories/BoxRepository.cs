@@ -23,7 +23,7 @@ namespace BoxProblem.Repositories
         {
             return dbContext.Boxes.ToList();
         }
-    }
+    
 
         public void AddBox(BoxInventory toAdd)
         {

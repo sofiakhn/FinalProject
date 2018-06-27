@@ -40,7 +40,7 @@ namespace BoxProblem.Controllers
         public ActionResult Delete(int id)
         {
             BoxInventory box = service.GetBoxById(id);
-            return View("Delete");
+            return View(box);
         }
 
         [HttpPost]
