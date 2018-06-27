@@ -19,7 +19,5 @@ namespace BoxProblem.Controllers
         {
             return View(service.GetAllBoxes());
         }
-
-        
     }
 }

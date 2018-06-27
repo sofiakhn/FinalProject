@@ -18,10 +18,5 @@ namespace BoxProblem.Repositories
         {
             return dbContext.Boxes.ToList();
         }
-
-        public List<BoxInventory> GetCheaperBoxes(int maxCost)
-        {
-            return dbContext.Boxes.Where(b => b.Cost < maxCost).ToList();
-        }
     }
 }

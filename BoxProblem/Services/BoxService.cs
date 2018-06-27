@@ -19,10 +19,5 @@ namespace BoxProblem.Services
         {
             return repository.GetAllBoxes();
         }
-
-        public List<BoxInventory> GetCheaperBoxes(int maxCost)
-        {
-            return repository.GetCheaperBoxes(maxCost);
-        }
     }
 }
