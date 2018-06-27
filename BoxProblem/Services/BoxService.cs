@@ -24,8 +24,12 @@ namespace BoxProblem.Services
             repository.AddBox(toAdd);
         }
 
-        public void DeleteBox(BoxInventory toDelete){
             repository.DeleteBox(toDelete);
+        }
+
+        public List<BoxInventory> GetAllBoxes()
+        {
+            return repository.GetAllBoxes();
         }
     }
 }

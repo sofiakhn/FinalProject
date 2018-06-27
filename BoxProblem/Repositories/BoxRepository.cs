@@ -19,6 +19,12 @@ namespace BoxProblem.Repositories
             return dbContext.Boxes.Find(id);
         }
 
+        public List<BoxInventory> GetAllBoxes()
+        {
+            return dbContext.Boxes.ToList();
+        }
+    }
+
         public void AddBox(BoxInventory toAdd)
         {
             dbContext.Boxes.Add(toAdd);
