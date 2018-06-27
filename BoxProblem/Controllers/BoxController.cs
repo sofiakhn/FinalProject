@@ -15,7 +15,14 @@ namespace BoxProblem.Controllers
         {
             service = new BoxService(context);
         }
+
         public IActionResult Index()
+        {
+            return View();
+        }
+
+
+        public ActionResult Filter()
         {
             return View();
         }
