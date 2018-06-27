@@ -16,12 +16,21 @@
   <ItemGroup>
     <Content Remove="Views\Box\Create.cshtml" />
     <Content Remove="Views\Box\Delete.cshtml" />
+    <Content Remove="wwwroot\css\BoxStyle.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Scripts\BoxStyle.css" />
+    <None Remove="New Folder\BoxScript.css" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Box\Create.cshtml" />
     <None Include="Views\Box\Delete.cshtml" />
+    <None Include="wwwroot\css\BoxStyle.css" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Models\Entity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\" />
   </ItemGroup>
 </Project>
