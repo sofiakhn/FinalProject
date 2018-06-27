@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BoxProblem.Data.BoxInventory>
+﻿@model List<BoxProblem.Data.BoxInventory>
 @{
     ViewData["Title"] = "Index";
 }
@@ -12,19 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.InventoryCount)
+            <h3>Inventory Count</h3>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Weight)
+            <h3>Weight</h3>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Volume)
+            <h3>Volume</h3>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CanHoldLiquid)
+            <h3>Can Hold Liquid</h3>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cost)
+            <h3>Cost</h3>
         </th>
     </tr>
 

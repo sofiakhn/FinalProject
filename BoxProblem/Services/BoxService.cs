@@ -19,5 +19,15 @@ namespace BoxProblem.Services
         {
             return repository.GetAllBoxes();
         }
+
+        public List<BoxInventory> FilterByWeight(int MinWeight, int MaxWeight)
+        {
+            return repository.FilterByWeight(MinWeight, MaxWeight);
+        }
+
+        public List<BoxInventory> FilterByVolume(int MinVolume, int MaxVolume)
+        {
+            return repository.FilterByVolume(MinVolume, MaxVolume);
+        }
     }
 }

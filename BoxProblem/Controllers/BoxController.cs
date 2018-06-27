@@ -15,6 +15,7 @@ namespace BoxProblem.Controllers
         {
             service = new BoxService(context);
         }
+
         public ActionResult Index()
         {
             return View(service.GetAllBoxes());
