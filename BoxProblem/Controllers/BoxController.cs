@@ -22,7 +22,7 @@ namespace BoxProblem.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         [HttpPost]
@@ -34,7 +34,7 @@ namespace BoxProblem.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(box);
+            return View("Index");
         }
 
 
@@ -44,6 +44,7 @@ namespace BoxProblem.Controllers
             return View(box);
         }
 
+        [HttpPost, ActionName("Delete")]
         [HttpPost]
         public ActionResult DeleteConfirmed(int id)
         {
