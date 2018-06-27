@@ -27,5 +27,11 @@ namespace BoxProblem.Services
         public void DeleteBox(BoxInventory toDelete){
             repository.DeleteBox(toDelete);
         }
+
+        public void SaveEdits(BoxInventory toSave)
+        {
+            repository.SaveEdits(toSave);
+        }
+
     }
 }
