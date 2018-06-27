@@ -14,5 +14,15 @@ namespace BoxProblem.Services
         {
             repository = new BoxRepository(context);
         }
+
+        public List<BoxInventory> GetAllBoxes()
+        {
+            return repository.GetAllBoxes();
+        }
+
+        public List<BoxInventory> GetCheaperBoxes(int maxCost)
+        {
+            return repository.GetCheaperBoxes(maxCost);
+        }
     }
 }
