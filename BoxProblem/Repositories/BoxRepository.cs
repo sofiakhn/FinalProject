@@ -37,6 +37,14 @@ namespace BoxProblem.Repositories
             dbContext.Entry(toSave).State = EntityState.Modified;;
             dbContext.SaveChanges();
         }
+<<<<<<< HEAD
 
+=======
+
+        public List<BoxInventory> GetAllBoxes()
+        {
+            return dbContext.Boxes.ToList();
+        }
+>>>>>>> dev
     }
 }

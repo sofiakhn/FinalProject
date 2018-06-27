@@ -15,6 +15,7 @@ namespace BoxProblem.Services
             repository = new BoxRepository(context);
         }
 
+<<<<<<< HEAD
         public BoxInventory GetBoxById(int id)
         {
             return repository.GetBoxById(id);
@@ -33,5 +34,11 @@ namespace BoxProblem.Services
             repository.SaveEdits(toSave);
         }
 
+=======
+        public List<BoxInventory> GetAllBoxes()
+        {
+            return repository.GetAllBoxes();
+        }
+>>>>>>> dev
     }
 }
