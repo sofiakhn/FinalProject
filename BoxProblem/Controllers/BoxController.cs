@@ -19,5 +19,37 @@ namespace BoxProblem.Controllers
         {
             return View(service.GetAllBoxes());
         }
+
+        public ActionResult Create()
+        {
+            return View("Create");
+        }
+
+        [HttpPost]
+        public ActionResult Create(BoxInventory box)
+        {
+            if (ModelState.IsValid)
+            {
+                service.AddBox(box);
+                return RedirectToAction("Index");
+            }
+
+            return View("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            BoxInventory box = service.GetBoxById(id);
+            return View(box);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            BoxInventory box = service.GetBoxById(id);
+            service.DeleteBox(box);
+            return RedirectToAction("Index");
+        }
+
     }
 }
