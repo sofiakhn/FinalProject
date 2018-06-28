@@ -24,7 +24,10 @@ nav {
 /*
     Font Sections
 */
+body{
+    background: url("cubes.png") repeat 0 0;
 
+}
 h2 {
     font-size: 100px;
     color: #CC6A5F;
@@ -40,17 +43,23 @@ th {
     background-color: #E9B07B;
 }
 
-
 a:link {
-    color: olive;
+    color: #648A74;
 }
 
 a:hover {
     color: darkgreen;
 }
 
-tr:hover {
+a:visited {
+    color: #648A74;
+}
+tr {
     background-color: #f5f5f5;
+}
+
+tr:hover {
+    background-color: #e8e8e8;
 }
 
 .font-body {
