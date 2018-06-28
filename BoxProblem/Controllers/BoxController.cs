@@ -16,7 +16,8 @@ namespace BoxProblem.Controllers
         {
             service = new BoxService(context);
         }
-        public ActionResult Index(string sortOrder, int? idSearch)
+
+        public ActionResult Index()
         {
             ViewBag.IdSortParm = String.IsNullOrEmpty(sortOrder) ? "Id_desc" : "";
             ViewBag.InventoryCountSortParm = sortOrder == "InventoryCount" ? "InventoryCount_desc" : "InventoryCount";
@@ -61,6 +62,20 @@ namespace BoxProblem.Controllers
                     break;
             }
             return View(boxes.ToList());
+        }
+
+
+        public ActionResult Filter()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Filter(FilterModel Model)
+        {
+            List<BoxInventory> boxes = service.Filter(Model);
+            return View("IndexFiltered", boxes);
         }
 
         public ActionResult Create()

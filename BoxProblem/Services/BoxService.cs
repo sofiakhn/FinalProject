@@ -37,5 +37,11 @@ namespace BoxProblem.Services
         {
             return repository.GetAllBoxes();
         }
+
+        public List<BoxInventory> Filter(FilterModel Filter)
+        {
+            return repository.Filter(Filter);
+        }
+
     }
 }

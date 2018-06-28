@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BoxProblem.Data.BoxInventory>
+﻿@model List<BoxProblem.Data.BoxInventory>
 @{
     ViewData["Title"] = "Index";
 }
@@ -6,7 +6,8 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create") ||
+    @Html.ActionLink("Filter", "Filter")
 </p>
 
 @using (Html.BeginForm()){
