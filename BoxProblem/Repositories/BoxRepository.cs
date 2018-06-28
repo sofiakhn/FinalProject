@@ -24,27 +24,29 @@ namespace BoxProblem.Repositories
         {
             return dbContext.Boxes.ToList();
         }
-    
 
-        public void AddBox(BoxInventory toAdd)
+        public List<BoxInventory> Filter(FilterModel Filter)
         {
-            dbContext.Boxes.Add(toAdd);
-            dbContext.SaveChanges();
+            if (Filter.MaxCost == null) Filter.MaxCost = int.MaxValue;
+            if (Filter.MinCost == null) Filter.MinCost = 0;
+            if (Filter.MaxVolume == null) Filter.MaxVolume = int.MaxValue;
+            if (Filter.MinVolume == null) Filter.MinVolume = 0;
+            if (Filter.MaxWeight == null) Filter.MaxWeight = int.MaxValue;
+            if (Filter.MinWeight == null) Filter.MinWeight = 0;
+            if (Filter.MaxInventory == null) Filter.MaxInventory = int.MaxValue;
+            if (Filter.MinInventory == null) Filter.MinInventory = 0;
+
+            if (Filter.CanHoldLiquid == null) return dbContext.Boxes.Where(b => b.Cost >= Filter.MinCost && b.Cost <= Filter.MaxCost && 
+            b.Volume >= Filter.MinVolume && b.Volume <= Filter.MaxVolume && 
+            b.Weight >= Filter.MinWeight && b.Weight <= Filter.MaxWeight && 
+            b.InventoryCount >= Filter.MinInventory && b.InventoryCount <= Filter.MaxInventory).ToList();
+            else return dbContext.Boxes.Where(b => b.Cost >= Filter.MinCost && b.Cost <= Filter.MaxCost &&
+            b.Volume >= Filter.MinVolume && b.Volume <= Filter.MaxVolume &&
+            b.Weight >= Filter.MinWeight && b.Weight <= Filter.MaxWeight &&
+            b.InventoryCount >= Filter.MinInventory && b.InventoryCount <= Filter.MaxInventory &&
+            b.CanHoldLiquid == Filter.CanHoldLiquid).ToList();
         }
+        
 
-        public void DeleteBox(BoxInventory toDelete)
-        {
-            dbContext.Boxes.Remove(toDelete);
-            dbContext.SaveChanges();
-        }
-
-        public void SaveEdits(BoxInventory toSave)
-        {
-            dbContext.Entry(toSave).State = EntityState.Modified;;
-            dbContext.SaveChanges();
-        }
-
-
-     
     }
-        }
+}

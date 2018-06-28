@@ -1,0 +1,55 @@
+﻿@model List<BoxProblem.Data.BoxInventory>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Show All", "Index")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            <h3>Inventory Count</h3>
+        </th>
+        <th>
+            <h3>Weight</h3>
+        </th>
+        <th>
+            <h3>Volume</h3>
+        </th>
+        <th>
+            <h3>Can Hold Liquid</h3>
+        </th>
+        <th>
+            <h3>Cost</h3>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InventoryCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Volume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CanHoldLiquid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+
+    }
+</table>

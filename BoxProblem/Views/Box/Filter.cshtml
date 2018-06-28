@@ -1,0 +1,78 @@
+﻿@model BoxProblem.Data.FilterModel;
+@{
+    ViewData["Title"] = "Filter";
+}
+
+<h2>Filter</h2>
+<p>
+    @Html.ActionLink("Index", "Index")
+</p>
+
+@using (Html.BeginForm())
+{
+<div class="container">
+    <div class="form-group">
+        <div class="row">
+            <h3>Inventory Count</h3>
+            <div class="col-md-6">
+                <label for="Minimum Inventory">Minimum Inventory</label>
+                @Html.EditorFor(model => model.MinInventory, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
+            </div>
+            <div class="col-md-6">
+                <label for="Max Inventory">Max Inventory</label>
+                @Html.EditorFor(model => model.MaxInventory, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
+            </div>
+        </div>
+
+        <div class="row">
+            <h3>Weight</h3>
+            <div class="col-md-6">
+                <label for="Minimum Weight">Minimum Weight</label>
+                @Html.EditorFor(model => model.MinWeight, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
+            </div>
+            <div class="col-md-6">
+                <label for="Max Weight">Max Weight</label>
+                @Html.EditorFor(model => model.MaxWeight, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
+            </div>
+        </div>
+
+        <div class="row">
+            <h3>Volume In Cubic Feet</h3>
+            <div class="col-md-6">
+                <label for="Minimum">Minimum</label>
+                @Html.EditorFor(model => model.MinVolume, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
+            </div>
+            <div class="col-md-6">
+                <label for="Max">Max</label>
+                @Html.EditorFor(model => model.MaxVolume, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
+            </div>
+        </div>
+
+        <div class="row">
+            <h3>Can Carry Liquid</h3>
+            <div class="col-md-2">
+                <label for="Can Hold Liquid"></label>
+                @Html.EditorFor(model => model.CanHoldLiquid, new { htmlAttributes = new { @name = "selector", @type = "Radio", @for = "Can Hold Liquid", @value = "Yes" } })
+                <br />
+            </div>
+        </div>
+
+        <div class="row">
+            <h3>Cost</h3>
+            <div class="col-md-6">
+                <label for="Minimum">Minimum</label>
+                @Html.EditorFor(model => model.MinCost, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
+            </div>
+            <div class="col-md-6">
+                <label for="Max">Max</label>
+                @Html.EditorFor(model => model.MaxCost, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <input type="submit" value="Filter" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+
+}

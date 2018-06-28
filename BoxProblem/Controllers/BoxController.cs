@@ -19,7 +19,63 @@ namespace BoxProblem.Controllers
 
         public ActionResult Index()
         {
-            return View(service.GetAllBoxes());
+            ViewBag.IdSortParm = String.IsNullOrEmpty(sortOrder) ? "Id_desc" : "";
+            ViewBag.InventoryCountSortParm = sortOrder == "InventoryCount" ? "InventoryCount_desc" : "InventoryCount";
+            ViewBag.WeightSortParm = sortOrder == "Weight" ? "Weight_desc" : "Weight";
+            ViewBag.VolumeSortParm = sortOrder == "Volume" ? "Volume_desc" : "Volume";
+            ViewBag.CostSortParm = sortOrder == "Cost" ? "Cost_desc" : "Cost";
+            var boxes = from b in service.GetAllBoxes() select b;
+
+            if (idSearch != null)
+            {
+                boxes = boxes.Where(b => b.Id == idSearch);
+            }
+
+            switch (sortOrder)
+            {
+                case "Id_desc":
+                    boxes = boxes.OrderByDescending(b => b.Id);
+                    break;
+                case "InventoryCount_desc":
+                    boxes = boxes.OrderByDescending(b => b.InventoryCount);
+                    break;
+                case "InventoryCount":
+                    boxes = boxes.OrderBy(b => b.InventoryCount);
+                    break;
+                case "Weight_desc":
+                    boxes = boxes.OrderByDescending(b => b.Weight);
+                    break;
+                case "Weight":
+                    boxes = boxes.OrderBy(b => b.Weight);
+                    break;
+                case "Volume_desc":
+                    boxes = boxes.OrderByDescending(b => b.Volume);
+                    break;
+                case "Volume":
+                    boxes = boxes.OrderBy(b => b.Volume);
+                    break;
+                case "Cost_desc":
+                    boxes = boxes.OrderByDescending(b => b.Cost);
+                    break;
+                case "Cost":
+                    boxes = boxes.OrderBy(b => b.Cost);
+                    break;
+            }
+            return View(boxes.ToList());
+        }
+
+
+        public ActionResult Filter()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Filter(FilterModel Model)
+        {
+            List<BoxInventory> boxes = service.Filter(Model);
+            return View("IndexFiltered", boxes);
         }
 
         public ActionResult Create()
