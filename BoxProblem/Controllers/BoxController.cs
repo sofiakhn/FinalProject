@@ -17,7 +17,7 @@ namespace BoxProblem.Controllers
             service = new BoxService(context);
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, int? idSearch)
         {
             ViewBag.IdSortParm = String.IsNullOrEmpty(sortOrder) ? "Id_desc" : "";
             ViewBag.InventoryCountSortParm = sortOrder == "InventoryCount" ? "InventoryCount_desc" : "InventoryCount";
