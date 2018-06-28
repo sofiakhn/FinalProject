@@ -24,7 +24,7 @@ namespace BoxProblem.Repositories
         {
             return dbContext.Boxes.ToList();
         }
-    
+
 
         public void AddBox(BoxInventory toAdd)
         {
@@ -40,11 +40,8 @@ namespace BoxProblem.Repositories
 
         public void SaveEdits(BoxInventory toSave)
         {
-            dbContext.Entry(toSave).State = EntityState.Modified;;
+            dbContext.Entry(toSave).State = EntityState.Modified;
             dbContext.SaveChanges();
         }
-
-
-     
     }
-        }
+}
