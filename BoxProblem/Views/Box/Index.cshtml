@@ -6,19 +6,7 @@
 <h3>Full Stacks</h3>
 <h2>Box Inventory</h2>
 
-<p>
-    <div>
-        <div class="row">
-            <div align ="right">
-                <div class= "col-md-12 md-offset-1">
-                @Html.ActionLink("Add New Box", "Create")
-    @Html.ActionLink("Filter", "Filter")
-                </div>
-            </div>
-        </div>
-    </div>
-</p>
-
+<div align ="right">
 @using (Html.BeginForm()){
 <p>
     Find by Id: @Html.TextBox("IdSearch")
@@ -26,10 +14,26 @@
 </p>
 }
 
+<p>
+    <div>
+        <div class="row">
+            <div class="mr-1">
+               
+                    @Html.ActionLink("Add New Box", "Create") ||
+                    @Html.ActionLink("Filter", "Filter")
+              
+            </div>
+        </div>
+    </div>
+</p>
+
+ </div>
+
+
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Id", "Index", new { sortOrder = ViewBag.IdSortParm})
+            @Html.ActionLink("Id", "Index", new { sortOrder = ViewBag.IdSortParm })
         </th>
         <th>
             @Html.ActionLink("Inventory Count", "Index", new { sortOrder = ViewBag.InventoryCountSortParm })
@@ -41,10 +45,12 @@
             @Html.ActionLink("Volume", "Index", new { sortOrder = ViewBag.VolumeSortParm })
         </th>
         <th>
-            Can Hold Liquid
+            @Html.ActionLink("Can Hold Liquid", "Index", new { sortOrder = ViewBag.CanHoldLiquidParm })
         </th>
         <th>
             @Html.ActionLink("Cost", "Index", new { sortOrder = ViewBag.CostSortParm })
+        </th>
+        <th>
         </th>
     </tr>
 

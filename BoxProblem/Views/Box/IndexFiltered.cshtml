@@ -3,7 +3,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Filtered Inventory</h2>
 
 <p>
     @Html.ActionLink("Show All", "Index")
@@ -12,25 +12,33 @@
 <table class="table">
     <tr>
         <th>
-            <h3>Inventory Count</h3>
+            @Html.ActionLink("Id", "IndexFiltered", new { sortOrder = ViewBag.IdSortParm })
         </th>
         <th>
-            <h3>Weight</h3>
+            @Html.ActionLink("Inventory Count", "IndexFiltered", new { sortOrder = ViewBag.InventoryCountSortParm })
         </th>
         <th>
-            <h3>Volume</h3>
+            @Html.ActionLink("Weight", "IndexFiltered", new { sortOrder = ViewBag.WeightSortParm })
         </th>
         <th>
-            <h3>Can Hold Liquid</h3>
+            @Html.ActionLink("Volume", "IndexFiltered", new { sortOrder = ViewBag.VolumeSortParm })
         </th>
         <th>
-            <h3>Cost</h3>
+            @Html.ActionLink("Can Hold Liquid", "IndexFiltered", new { sortOrder = ViewBag.CanHoldLiquidParm })
+        </th>
+        <th>
+            @Html.ActionLink("Cost", "IndexFiltered", new { sortOrder = ViewBag.CostSortParm })
+        </th>
+        <th>
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.InventoryCount)
             </td>
