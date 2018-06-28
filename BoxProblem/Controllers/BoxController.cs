@@ -16,7 +16,7 @@ namespace BoxProblem.Controllers
         {
             service = new BoxService(context);
         }
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, int? idSearch)
         {
             ViewBag.IdSortParm = String.IsNullOrEmpty(sortOrder) ? "Id_desc" : "";
             ViewBag.InventoryCountSortParm = sortOrder == "InventoryCount" ? "InventoryCount_desc" : "InventoryCount";
@@ -24,6 +24,12 @@ namespace BoxProblem.Controllers
             ViewBag.VolumeSortParm = sortOrder == "Volume" ? "Volume_desc" : "Volume";
             ViewBag.CostSortParm = sortOrder == "Cost" ? "Cost_desc" : "Cost";
             var boxes = from b in service.GetAllBoxes() select b;
+
+            if (idSearch != null)
+            {
+                boxes = boxes.Where(b => b.Id == idSearch);
+            }
+
             switch (sortOrder)
             {
                 case "Id_desc":
