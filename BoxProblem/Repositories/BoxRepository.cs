@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace BoxProblem.Repositories
 {
@@ -12,6 +13,11 @@ namespace BoxProblem.Repositories
         public BoxRepository(ApplicationDbContext context)
         {
             dbContext = context;
+        }
+
+        public BoxInventory GetBoxById(int id)
+        {
+            return dbContext.Boxes.Find(id);
         }
 
         public List<BoxInventory> GetAllBoxes()
