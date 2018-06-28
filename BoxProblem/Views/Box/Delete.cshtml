@@ -51,15 +51,19 @@
             }
         </div>*@
 
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+            <div class="form-group">
+                <div class=" col-md-10">
+                    <input type="submit" value="Delete" class="btn btn-default" />
+                    <br />
+                </div>
+            </div>
+}
 
 
-        <div class=" col-md-10">
-            <input type="submit" value="Delete" class="btn btn-default" />
-            <br/>
-        </div>
-    
-
-<div align ="left">
+<div align="left">
     <div class="row">
         @Html.ActionLink("Back to List", "Index")
     </div>
