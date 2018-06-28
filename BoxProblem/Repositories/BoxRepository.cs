@@ -14,82 +14,33 @@ namespace BoxProblem.Repositories
             dbContext = context;
         }
 
-        public IQueryable<BoxInventory> GetAllBoxes()
+        public List<BoxInventory> GetAllBoxes()
         {
-            return dbContext.Boxes.AsQueryable();
+            return dbContext.Boxes.ToList();
         }
 
-        public IQueryable<BoxInventory> Filter(int? MinWeight, int? MaxWeight, int? MinVolume, int? MaxVolume, bool? CanHold, bool? CantHold, bool? Either, int? MinCost, int? MaxCost)
+        public List<BoxInventory> Filter(FilterModel Filter)
         {
-            IQueryable<BoxInventory> Filter = dbContext.Boxes.AsQueryable<BoxInventory>();
+            if (Filter.MaxCost == null) Filter.MaxCost = int.MaxValue;
+            if (Filter.MinCost == null) Filter.MinCost = 0;
+            if (Filter.MaxVolume == null) Filter.MaxVolume = int.MaxValue;
+            if (Filter.MinVolume == null) Filter.MinVolume = 0;
+            if (Filter.MaxWeight == null) Filter.MaxWeight = int.MaxValue;
+            if (Filter.MinWeight == null) Filter.MinWeight = 0;
+            if (Filter.MaxInventory == null) Filter.MaxInventory = int.MaxValue;
+            if (Filter.MinInventory == null) Filter.MinInventory = 0;
 
-            if (MaxWeight != null)
-            {
-                if(MinWeight == null)
-                {
-                    Filter = Filter.Where(d => d.Weight >= 0 && d.Weight <= MaxWeight);
-                }
-                else
-                {
-                    Filter = Filter.Where(d => d.Weight >= MinCost && d.Weight <= MaxWeight);
-                }
-            }
-            if (MaxVolume != null)
-            {
-                if(MinVolume == null)
-                {
-                    Filter = Filter.Where(d => d.Volume >= 0 && d.Volume <= MaxVolume);
-                }
-                else
-                {
-                    Filter = Filter.Where(d => d.Volume >= MinVolume && d.Volume <= MaxVolume);
-                }
-            }
-            if (CanHold == true)
-            {
-                Filter = Filter.Where(d => d.CanHoldLiquid == true);
-            }
-            if (CantHold == true)
-            {
-                Filter = Filter.Where(d => d.CanHoldLiquid == true);
-            }
-            if(MaxCost != null)
-            {
-                if(MinCost == null)
-                {
-                    Filter = Filter.Where(d => d.Cost >= 0 && d.Cost <= MaxCost);
-                }
-                else
-                {
-                    Filter = Filter.Where(d => d.Cost >= MinCost && d.Cost <= MaxCost);
-                }
-            }
-
-            return Filter;
+            if (Filter.CanHoldLiquid == null) return dbContext.Boxes.Where(b => b.Cost >= Filter.MinCost && b.Cost <= Filter.MaxCost && 
+            b.Volume >= Filter.MinVolume && b.Volume <= Filter.MaxVolume && 
+            b.Weight >= Filter.MinWeight && b.Weight <= Filter.MaxWeight && 
+            b.InventoryCount >= Filter.MinInventory && b.InventoryCount <= Filter.MaxInventory).ToList();
+            else return dbContext.Boxes.Where(b => b.Cost >= Filter.MinCost && b.Cost <= Filter.MaxCost &&
+            b.Volume >= Filter.MinVolume && b.Volume <= Filter.MaxVolume &&
+            b.Weight >= Filter.MinWeight && b.Weight <= Filter.MaxWeight &&
+            b.InventoryCount >= Filter.MinInventory && b.InventoryCount <= Filter.MaxInventory &&
+            b.CanHoldLiquid == Filter.CanHoldLiquid).ToList();
         }
+        
 
-        public List<BoxInventory> FilterByWeight(int MinWeight, int MaxWeight)
-        {
-            List<BoxInventory> Boxes = dbContext.Boxes.Where(b => b.Weight <= MaxWeight && b.Weight >= MinWeight).ToList();
-            return Boxes;
-        }
-
-        public List<BoxInventory> FilterByVolume(int MinVolume, int MaxVolume)
-        {
-            List<BoxInventory> Boxes = dbContext.Boxes.Where(b => b.Volume <= MaxVolume && b.Volume >= MinVolume).ToList();
-            return Boxes;
-        }
-
-        public List<BoxInventory> FilterByCost(int MinCost, int MaxCost)
-        {
-            List<BoxInventory> Boxes = dbContext.Boxes.Where(b => b.Cost <= MaxCost && b.Cost >= MinCost).ToList();
-            return Boxes;
-        }
-
-        public List<BoxInventory> FilterByLiquidProof(bool isLiquidProof)
-        {
-            List<BoxInventory> Boxes = dbContext.Boxes.Where(b => b.CanHoldLiquid == isLiquidProof).ToList();
-            return Boxes;
-        }
     }
 }

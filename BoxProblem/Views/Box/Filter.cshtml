@@ -13,6 +13,18 @@
 <div class="container">
     <div class="form-group">
         <div class="row">
+            <h3>Inventory Count</h3>
+            <div class="col-md-6">
+                <label for="Minimum Inventory">Minimum Inventory</label>
+                @Html.EditorFor(model => model.MinInventory, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
+            </div>
+            <div class="col-md-6">
+                <label for="Max Inventory">Max Inventory</label>
+                @Html.EditorFor(model => model.MaxInventory, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
+            </div>
+        </div>
+
+        <div class="row">
             <h3>Weight</h3>
             <div class="col-md-6">
                 <label for="Minimum Weight">Minimum Weight</label>
@@ -39,15 +51,9 @@
         <div class="row">
             <h3>Can Carry Liquid</h3>
             <div class="col-md-2">
-                <label for="Can Hold Liquid">Yes</label>
+                <label for="Can Hold Liquid"></label>
                 @Html.EditorFor(model => model.CanHoldLiquid, new { htmlAttributes = new { @name = "selector", @type = "Radio", @for = "Can Hold Liquid", @value = "Yes" } })
                 <br />
-                <label for="Can't Hold Liquid">No</label>
-                @Html.EditorFor(model => model.CantHoldLiquid, new { htmlAttributes = new { @name = "selector", @type = "Radio", @for = "Can't Hold Liquid", @value = "No" } })
-                <br />
-                <label for="Doesn't Matter">Either</label>
-                @Html.EditorFor(model => model.DoesntMatter, new { htmlAttributes = new { @name = "selector", @type = "Radio", @for = "Doesn't Matter", @value = "Either" } })
-                <br />            
             </div>
         </div>
 
@@ -64,7 +70,7 @@
         </div>
         <hr />
         <div class="row">
-            <input type ="submit" value="Filter" class="btn btn-default"/>
+            <input type="submit" value="Filter" class="btn btn-default" />
         </div>
     </div>
 </div>

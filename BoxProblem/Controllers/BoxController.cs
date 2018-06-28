@@ -32,7 +32,7 @@ namespace BoxProblem.Controllers
         public ActionResult Filter(FilterModel Model)
         {
             List<BoxInventory> boxes = service.Filter(Model);
-            return View("Index", boxes);
+            return View("IndexFiltered", boxes);
         }
     }
 }

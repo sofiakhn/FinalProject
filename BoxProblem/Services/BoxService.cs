@@ -17,7 +17,7 @@ namespace BoxProblem.Services
 
         public List<BoxInventory> GetAllBoxes()
         {
-            return repository.GetAllBoxes().ToList();
+            return repository.GetAllBoxes();
         }
 
         public List<BoxInventory> Filter(FilterModel Filter)

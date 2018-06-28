@@ -14,10 +14,11 @@ namespace BoxProblem.Data
         public int? MaxVolume { get; set; }
 
         public bool? CanHoldLiquid { get; set; }
-        public bool? CantHoldLiquid { get; set; }
-        public bool? DoesntMatter { get; set; }
 
         public int? MinCost { get; set; }
         public int? MaxCost { get; set; }
+
+        public int? MinInventory { get; set; }
+        public int? MaxInventory { get; set; }
     }
 }
