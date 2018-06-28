@@ -3,10 +3,17 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h3>Full Stacks</h3>
+<h2>Box Inventory</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <div>
+        <div class="row">
+            <div align ="right">
+                @Html.ActionLink("Add New Box", "Create")
+            </div>
+        </div>
+    </div>
 </p>
 
 <table class="table">
@@ -25,6 +32,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Cost)
+        </th>
+        <th>
+           
         </th>
     </tr>
 
