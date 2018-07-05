@@ -1,0 +1,63 @@
+﻿@model List<BoxProblem.Data.BoxInventory>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Filtered Inventory</h2>
+
+<p>
+    @Html.ActionLink("Show All", "Index")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Id", "IndexFiltered", new { sortOrder = ViewBag.IdSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Inventory Count", "IndexFiltered", new { sortOrder = ViewBag.InventoryCountSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Weight (lbs.)", "IndexFiltered", new { sortOrder = ViewBag.WeightSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Volume (qts.)", "IndexFiltered", new { sortOrder = ViewBag.VolumeSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Can Hold Liquid", "IndexFiltered", new { sortOrder = ViewBag.CanHoldLiquidParm })
+        </th>
+        <th>
+            @Html.ActionLink("Cost (USD)", "IndexFiltered", new { sortOrder = ViewBag.CostSortParm })
+        </th>
+        <th>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InventoryCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Volume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CanHoldLiquid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+
+    }
+</table>
